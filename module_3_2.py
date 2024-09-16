@@ -1,11 +1,11 @@
 def send_email (message, recipient, *,sender = "university.help@gmail.com"):
-    if not recipient in '@':
+    if '@' not in recipient:
         adress_flag = False
-    elif not sender in '@':
+    elif "@" not in sender:
         adress_flag = False
-    elif not recipient in ".com" or ".ru" or ".net":
+    elif ".com" or ".ru" or ".net" not in recipient:
         adress_flag = False
-    elif not sender in ".com" or ".ru" or ".net":
+    elif ".com" or ".ru" or ".net" not in sender:
         adress_flag = False
         print(f'Невозможно отправить письмо с адреса {sender} на адрес {recipient}.')
     else:
