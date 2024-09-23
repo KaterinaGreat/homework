@@ -1,10 +1,10 @@
-adress_flag = []
 def send_email(message, recipient, *,sender = "university.help@gmail.com"):
     if ('@' or (".com" or ".ru" or ".net")) not in (recipient or sender) or ("@" and (".com" or ".ru" or ".net")) not in (sender or recipient):
         return f'Невозможно отправить письмо с адреса {sender} на адрес {recipient}.'
     elif recipient == sender:
-        return "Нельзя отправить письмо самому себе!"
-    elif sender == "university.help@gmail.com:":
+        adress_flag = "Нельзя отправить письмо самому себе!"
+        return adress_flag.endswith("Нельзя отправить письмо самому себе!")
+    elif sender == "university.help@gmail.com":
         return f"Письмо успешно отправлено с адреса {sender} на адрес {recipient}."
     elif sender != "university.help@gmail.com":
         return f"НЕСТАНДАРТНЫЙ ОТПРАВИТЕЛЬ! Письмо отправлено с адреса {sender} на адрес {recipient}."
