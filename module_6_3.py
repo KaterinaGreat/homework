@@ -21,6 +21,9 @@ class Animal:
         if self._DEGREE_OF_DANGER > 5:
             print("Be careful, i'm attacking you 0_0")
 
+    def speak(self):
+        print(self.sound)
+
 class Bird(Animal):
     beak = True
     def lay_eggs(self):
