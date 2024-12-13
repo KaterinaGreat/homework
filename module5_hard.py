@@ -1,8 +1,22 @@
+from time import sleep
+
+
 class User:
     def __init__(self, nickname, password, age):
         self.nickname = nickname
         self.password = self.hash_password(password)
         self.age = age
+
+    def __str__(self):
+        return self.nickname
+
+    def __eq__(self):
+        return self.nickname == self.current_user
+
+    def get_info(self):
+        print(f'Имя: {self.nickname}')
+        print(f'Пароль: {self.password}')
+        print(f'Возраст: {self.age}')
 
     def hash_password(self, password):
         return hash(password)
@@ -11,19 +25,19 @@ class Video:
     # title = (str)
     # duration = (int)ration
 
-    def __init__(self, title, duration, time_now=0, adult_mode=False):
+    def __init__(self, title=str, duration=int, time_now=0, adult_mode=False):
         self.title = title
         self.duration = duration
         self.time_now = time_now
         self.adult_mode = adult_mode
+
+    def __repr__(self):
+        return print(f"Видео(Название={self.title}, продолжительность={self.duration}, ограничение по возрасту={self.adult_mode})")
 class UrTube:
-    # users = []
-    # videos = []
-    # current_user = current_user
-    def __init__(self):
+    def __init__(self, current_user=None):
         self.users = []
         self.videos = []
-        self.current_user = None
+        self.current_user = current_user
 
     def log_in(self, nickname, password):
         for user in self.users:
@@ -32,12 +46,13 @@ class UrTube:
                 return
 
     def register(self, nickname, password, age):
+        new_user = User(nickname, password, age)
+        self.users.append(new_user)
         for user in self.users:
             if user.nickname == nickname and user.hash_password == hash(password):
-                return f"Пользователь {nickname} уже существует"
-        u = User(nickname, password, age)
-        self.users.append(u)
-        self.current_user = u
+                return f"Пользователь {user.nickname} уже существует"
+            else:
+                self.current_user = new_user
 
     def log_out(self):
         self.current_user = None
@@ -52,11 +67,11 @@ class UrTube:
             if not is_found:
                 self.videos.append(video)
 
-    def get_videos(self, get):
-        get_lower = []
+    def get_videos(self, search_word):
+        search_word_lower = search_word.lower()
         for video in self.videos:
-            if get_lower == get.lower():
-                return get_lower
+            if search_word_lower in video.title.lower():
+                return video.title
 
     def watch_video(self, title):
         if not self.current_user:
