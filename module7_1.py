@@ -23,15 +23,15 @@ class Shop:
         names = []
         file = open(self.__file_name, 'a+')
         file.seek(0)
-        for i in file:
-            name = i.split(', '[0])
+        for line in file:
+            name = line.split(', '[0])
             names.append(name)
-        for i in products:
-            if i.name in names:
-                print(f'продукт {i.name} уже есть в магазине')
+        for product in products:
+            if product.name in names:
+                print(f'продукт {product.name} уже есть в магазине')
             else:
-                file.write(f'{i.name}\n')
-                names.append(i.name)
+                file.write(f'{product.name}, {product.weight}, {product.category}\n')
+                names.append(product.name)
         file.close()
 
 s1 = Shop()
