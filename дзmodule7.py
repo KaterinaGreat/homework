@@ -19,7 +19,9 @@ def challenge_result(result):
         result = 'Победа команды Мастера кода!'
     elif score_1 < score_2 or score_1 == score_2 and team1_time < team2_time:
         result = 'Победа команды Волшебники Данных!'
-    return print(f"Результат битвы: {result}")
+    return (f"Результат битвы: {result}")
+    res = challenge_result()
+    print(res)
 
 tasks_total = 82
 time_avg = (team1_time + team2_time)/ 2
