@@ -1,3 +1,4 @@
+import io
 class WordsFinder:
     def __init__(self, *file_names):
         self.file_names = file_names
@@ -5,9 +6,11 @@ class WordsFinder:
     def get_all_words(self):
         all_words = {}
         for file_name in self.file_names:
-            with open(file_name, 'r', encoding='utf-8') as file:
-                line = file.read().lower()
+            with open(file_name, 'w', encoding='utf-8') as file:
+                file.tell()
+                line = file.write.lower()
                 for punctuation in [',', '.', '=', '!', '?', ';', ':', ' - ']:
+                    file.seek(32)
                     line = line.replace(punctuation, '')
                     words = line.split()
                     all_words[file_name] = words
