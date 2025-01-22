@@ -14,7 +14,7 @@ if __name__ == '__main__':
         read_info(name)
     print(datetime.now() - start_time, '(линейный)')
 
-    start_time = datetime.now()
-    with multiprocessing.Pool(processes=4) as pool:
-        pool.map(read_info, filenames)
-    print(datetime.now() - start_time, '(многопроцессный)')
+    #start_time = datetime.now()
+    #with multiprocessing.Pool(processes=4) as pool:
+        #pool.map(read_info, filenames)
+    #print(datetime.now() - start_time, '(многопроцессный)')
